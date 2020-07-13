@@ -1,5 +1,5 @@
 # snake-game
-A take on the classic game with python.
+A take on the classic game with Python. Can be expanded to support multiple players.
 
 Simply run main.py to start playing.
 
