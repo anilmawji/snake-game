@@ -15,4 +15,4 @@ UP = 2
 DOWN = 3
 
 SHOW_GRID = True
-START_SIZE = 3
+START_SIZE = 2
