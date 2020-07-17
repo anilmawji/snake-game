@@ -42,15 +42,8 @@ class Snake:
             self.segments[i] = self.segments[i + 1]
         self.segments[-1] = (self.x, self.y)
 
-        # Check for collision with bounds of screen
-        if self.x < 0 or self.x > DISPLAY_WIDTH // SCALE - 1 or self.y < 0 or self.y > DISPLAY_HEIGHT // SCALE - 1:
+        if self.collides_with_display() or self.collides_with_self():
             self.die()
-        elif num_segments > 3:
-            # Check for collision with self
-            for pos in self.segments[:-1]:
-                if math.dist(self.segments[-1], pos) < 1:
-                    self.die()
-                    break
 
     def render(self, display):
         for pos in self.segments:
@@ -74,6 +67,15 @@ class Snake:
         # Check each snake segment for a collision
         for pos in self.segments:
             if pos[0] == x and pos[1] == y:
+                return True
+        return False
+
+    def collides_with_display(self):
+        return self.x < 0 or self.x > DISPLAY_WIDTH // SCALE - 1 or self.y < 0 or self.y > DISPLAY_HEIGHT // SCALE - 1
+
+    def collides_with_self(self):
+        for pos in self.segments[:-1]:
+            if math.dist(self.segments[-1], pos) < 1:
                 return True
         return False
 
